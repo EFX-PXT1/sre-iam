@@ -1,0 +1,24 @@
+syntax = "proto3";
+package api;
+
+//import "google/api/annotations.proto";
+
+option go_package = "github.com/EFX-PXT1/sre-iam/api";
+
+message RoleBinding {
+  string projectId  = 1;
+  string email = 2;
+  repeated string role = 3;
+}
+
+service BindRole {
+  rpc BindRole (RoleBinding) returns (RcReply) {
+//    option (google.api.http) = { put: "/v1/bindrole" body: "*" };
+  }
+}
+
+message RcReply {
+  int32 rc = 1;
+  bool isError = 2;
+  string message = 3;
+}
